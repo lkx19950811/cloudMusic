@@ -2,8 +2,13 @@ package com.leon.cloud;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * @author leon
@@ -19,12 +24,13 @@ public class NormalTest {
     @Test
     public void hello(){
 //        实例化ChromeDriver
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://www.baidu.com");
-        String title = driver.getTitle();
-        System.out.printf(title);
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("http://music.163.com/");
+        driver.findElementByLinkText("排行榜").click();
+//        driver.close();
 
-        driver.close();
+        driver.switchTo().frame("g_iframe");
+        driver.findElementByClassName("u-btni-addply").click();
 
     }
 }
