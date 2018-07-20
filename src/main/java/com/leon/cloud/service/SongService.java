@@ -2,6 +2,8 @@ package com.leon.cloud.service;
 
 import com.leon.cloud.common.BaseService;
 import com.leon.cloud.entity.Song;
+import com.leon.cloud.repository.SongRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,4 +13,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SongService extends BaseService<Song> {
+    @Autowired
+    SongRepository repository;
 }

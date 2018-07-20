@@ -6,5 +6,5 @@ package com.leon.cloud.common;
  * @desc 自定义变量
  */
 public class Constants {
-    static final String musicUrl = "https://music.163.com/#";
+   public static final String musicUrl = "https://music.163.com/#";
 }

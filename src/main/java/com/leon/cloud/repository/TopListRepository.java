@@ -8,5 +8,5 @@ import com.leon.cloud.entity.Toplist;
  * @date 2018-07-20 11:42
  * @desc
  */
-public interface TopLIstRepository extends Repository<Toplist> {
+public interface TopListRepository extends Repository<Toplist> {
 }

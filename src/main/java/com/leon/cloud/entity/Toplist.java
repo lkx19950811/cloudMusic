@@ -4,8 +4,7 @@ import com.leon.cloud.common.Domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-
+import javax.persistence.ManyToOne;
 /**
  * @author leon
  * @date 2018-07-20 11:11
@@ -21,10 +20,22 @@ public class Toplist extends Domain {
     /**
      * 歌曲
      */
-    @OneToOne
-    private Song song;
+    private String songName;
     /**
      * 排名
      */
     private Integer rank;
+    /**
+     * 歌曲链接
+     */
+    private String url;
+    /**
+     * 歌手
+     */
+    @ManyToOne
+    private Singer singer;
+    /**
+     * 时长
+     */
+    private String time;
 }

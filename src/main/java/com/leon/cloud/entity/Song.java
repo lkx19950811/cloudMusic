@@ -4,6 +4,7 @@ import com.leon.cloud.common.Domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  * @author leon
@@ -20,7 +21,8 @@ public class Song extends Domain {
     /**
      * 歌手
      */
-    private String singer;
+    @ManyToOne
+    private Singer singer;
     /**
      * 作词
      */
@@ -37,4 +39,8 @@ public class Song extends Domain {
      * 评论数
      */
     private Integer reviewQuantity;
+    /**
+     * 歌曲链接
+     */
+    private String url;
 }

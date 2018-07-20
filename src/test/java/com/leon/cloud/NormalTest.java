@@ -46,4 +46,10 @@ public class NormalTest {
             Thread.sleep(3000);
         }
     }
+    @Test
+    public void lombok(){
+        Song song = new Song();
+        song.setAlbum("aa");
+        System.out.println(song);
+    }
 }
