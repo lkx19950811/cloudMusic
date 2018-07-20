@@ -2,9 +2,8 @@ package com.leon.cloud.common;
 
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,9 +12,11 @@ import java.util.Date;
  * @desc
  */
 @Data
-public class BaseEntity {
+@MappedSuperclass
+public class Domain implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // MYSQL时可以这样使用自增
     private Integer id;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate = new Date();
 }

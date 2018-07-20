@@ -29,7 +29,7 @@ public class NormalTest {
 //        实例化ChromeDriver
         ChromeDriver driver = new ChromeDriver();
         driver.get("https://music.163.com/");
-        driver.findElementByLinkText("歌手").click();
+        driver.findElementByLinkText("排行榜").click();
 //      driver.close();
 
         driver.switchTo().frame("g_iframe");
@@ -39,16 +39,11 @@ public class NormalTest {
             String href = webElement.getAttribute("href");
             if (StringUtils.isEmpty(href)){
                 continue;
-            }else if (!href.contains("song")){
+            }else if (!href.contains("toplist")){
                 continue;
             }
             webElement.click();
             Thread.sleep(3000);
         }
-    }
-    @Test
-    public void testGetSet(){
-        Song song = new Song();
-        System.out.println(song);
     }
 }

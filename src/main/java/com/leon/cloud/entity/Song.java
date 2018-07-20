@@ -1,6 +1,6 @@
 package com.leon.cloud.entity;
 
-import com.leon.cloud.common.BaseEntity;
+import com.leon.cloud.common.Domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  */
 @Entity
 @Data
-public class Song extends BaseEntity {
+public class Song extends Domain {
     /**
      * 歌曲名字
      */
