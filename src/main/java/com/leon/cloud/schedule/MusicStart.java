@@ -30,7 +30,7 @@ public class MusicStart {
     @Autowired
     TopListService topListService;
 //    @Scheduled(cron = "0 0 0/12 * * ? ")
-    @Scheduled(initialDelay = 1000, fixedRate = 1000 * 60 * 60)   //initialDelay = 1000表示延迟1000ms执行第一次任务
+    @Scheduled(initialDelay = 1000, fixedRate = 1000 * 60 * 60 * 24)   //initialDelay = 1000表示延迟1000ms执行第一次任务
     public void Music() throws InterruptedException {
         getTopList();
     }
