@@ -56,6 +56,5 @@ public class MusicStart {
         }
         topListService.parseTop(topUrls,driver);
         driver.close();
-
     }
 }
