@@ -1,41 +1,36 @@
-package com.leon.cloud.schedule;
+package com.leon.cloud.Task;
 
-import com.leon.cloud.common.Constants;
-import com.leon.cloud.entity.Toplist;
-import com.leon.cloud.service.CommentService;
-import com.leon.cloud.service.SongService;
 import com.leon.cloud.service.TopListService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
- * @author leon
- * @date 2018-07-19 15:40
- * @desc
+ * @author lee Cather
+ * @date 2018-09-03 16:08
+ * desc : 排行榜任务
  */
 @Component
-public class MusicStart {
-    @Autowired
-    CommentService commentService;
-    @Autowired
-    SongService songService;
+public class ToplistTask implements Callable<String> {
+    private Logger logger = LoggerFactory.getLogger(ToplistTask.class);
     @Autowired
     TopListService topListService;
-//    @Scheduled(cron = "0 0 0/12 * * ? ")
-//    @Scheduled(initialDelay = 1000, fixedRate = 1000 * 60 * 60 * 24)   //initialDelay = 1000表示延迟1000ms执行第一次任务
-    public void Music() throws InterruptedException {
-        getTopList();
-    }
-
-    public void getTopList() throws InterruptedException {
+    @Override
+    public String call() throws Exception {
+        SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        String start = sf.format(new Date());
+        logger.info("start:{} ",start);
         //      实例化ChromeDriver
         ChromeDriver driver = new ChromeDriver();
         driver.get("https://music.163.com/");
@@ -45,16 +40,16 @@ public class MusicStart {
         driver.switchTo().frame("g_iframe");
         List<WebElement> list = driver.findElements(By.className("avatar"));
         List<String> topUrls = new ArrayList<>();
-        for (WebElement webElement : list){
+        list.forEach(webElement->{
             String href = webElement.getAttribute("href");
-            if (StringUtils.isEmpty(href)){
-                continue;
-            }else if (!href.contains("toplist")){
-                continue;
+            if (!StringUtils.isEmpty(href) && (href.contains("toplist"))){
+                topUrls.add(href);
             }
-            topUrls.add(href);
-        }
+        });
         topListService.parseTop(topUrls,driver);
         driver.close();
+        String end = sf.format(new Date());
+        logger.info("start: {} ---- end:{}",start,end);
+        return "start :" + start + " -----  end: " + end;
     }
 }
