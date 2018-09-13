@@ -2,9 +2,8 @@
 the selenium spider for cloudMusic
 
 selenium 的驱动文件放置在drivers下
-# 关于如何使用
-使用的springboot框架,等待maven把包下好,项目编译完毕,
-直接启动CloudApplication类即可,我使用的是定时任务来抓取网易云,目前设置一小时抓取一次,可以自行修改,
+# 关于如何使用,
+直接启动CloudApplication类即可,目前设置一小时抓取一次,可以自行修改,
 定时任务文件夹在 schedule下<br>
 当然我此版本的maven插件我也都配好了,你可以直接打成jar包 使用 java -jar 来启动打包好项目
 
