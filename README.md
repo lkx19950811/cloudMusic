@@ -1,6 +1,8 @@
 # cloudMusic
 the selenium spider for cloudMusic
 
+这是一个使用 selenium来启动浏览器自动爬取网易云排行榜的小项目
+
 selenium 的驱动文件放置在drivers下
 # 关于如何使用,
 直接启动CloudApplication类即可,目前设置一小时抓取一次,可以自行修改,
